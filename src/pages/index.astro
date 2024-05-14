@@ -8,9 +8,16 @@ import App from '../components/App';
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,116&display=swap"
+      rel="stylesheet"
+    />
     <title>E-commerce product page</title>
   </head>
   <body>
-    <App client:only />
+    <App client:only="react" />
   </body>
 </html>
