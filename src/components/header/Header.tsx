@@ -1,7 +1,6 @@
 import NavLink from './NavLink';
 
 import logo from '../../assets/images/logo.svg';
-import cartIcon from '../../assets/images/icon-cart.svg';
 import profileAvatar from '../../assets/images/image-avatar.png';
 
 export default function Header() {
@@ -22,6 +21,7 @@ export default function Header() {
       <button className="ml-auto">
         <svg
           className="group"
+          aria-label="Cart icon"
           width="22"
           height="20"
           xmlns="http://www.w3.org/2000/svg"
