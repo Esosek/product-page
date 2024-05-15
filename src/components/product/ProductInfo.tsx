@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import QuantitySelect from './QuantitySelect';
 
 interface IProductInfoProps {}
 
 export default function ProductInfo(props: IProductInfoProps) {
+  const [productCount, setProductCount] = useState(0);
   return (
     <div>
       <p className="uppercase text-primary-400 tracking-widest font-bold">
@@ -24,7 +26,13 @@ export default function ProductInfo(props: IProductInfoProps) {
       </div>
       <p className="line-through text-neutral-400">$250.00</p>
       <div className="flex">
-        <QuantitySelect value={0} />
+        <QuantitySelect
+          value={productCount}
+          onIncrement={() => setProductCount(productCount + 1)}
+          onDecrement={() =>
+            setProductCount(productCount > 0 ? productCount - 1 : 0)
+          }
+        />
         {/* PrimaryButton */}
       </div>
     </div>
