@@ -1,3 +1,5 @@
+import QuantitySelect from './QuantitySelect';
+
 interface IProductInfoProps {}
 
 export default function ProductInfo(props: IProductInfoProps) {
@@ -21,8 +23,8 @@ export default function ProductInfo(props: IProductInfoProps) {
         </p>
       </div>
       <p className="line-through text-neutral-400">$250.00</p>
-      <div>
-        {/* QuantitySelect */}
+      <div className="flex">
+        <QuantitySelect value={0} />
         {/* PrimaryButton */}
       </div>
     </div>
