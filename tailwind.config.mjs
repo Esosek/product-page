@@ -5,6 +5,7 @@ export default {
     colors: {
       white: 'hsl(0, 0, 100%)',
       black: 'hsl(0, 0, 0%)',
+      transparent: 'transparent',
       'neutral-100': 'hsl(223, 64%, 98%)',
       'neutral-400': 'hsl(220, 14%, 75%)',
       'neutral-700': 'hsl(219, 9%, 45%)',
