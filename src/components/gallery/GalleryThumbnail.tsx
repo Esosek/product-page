@@ -18,7 +18,9 @@ export default function GalleryThumbnail({
         <img
           src={src}
           alt={alt}
-          className={`transition-opacity ${isSelected && 'opacity-30'}`}
+          className={` transition-opacity ${
+            isSelected ? 'opacity-30' : 'hover:opacity-30'
+          }`}
         />
       </button>
     </li>
