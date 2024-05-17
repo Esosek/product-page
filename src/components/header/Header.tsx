@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 export default function Header() {
   return (
-    <header className="flex items-center gap-10 mx-4 border-b-[1px] border-neutral-400">
+    <header className="flex items-center fixed gap-6 top-0 left-0 right-0 py-4 px-6 md:static md:gap-10 md:border-b-[1px] md:border-neutral-400 md:p-0">
       <a href="#">
         <img src={logo.src} alt="Sneakers logo" />{' '}
       </a>
@@ -24,7 +24,7 @@ export default function Header() {
           />
         </svg>
       </button>
-      <button className="rounded-full border-2 border-transparent hover:border-primary-400 transition-colors">
+      <button className="rounded-full border-2 size-7 border-transparent hover:border-primary-400 transition-colors">
         <img src={profileAvatar.src} alt="User avatar" className="max-h-10" />
       </button>
     </header>
