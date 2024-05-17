@@ -1,23 +1,14 @@
-import NavLink from './NavLink';
-
 import logo from '../../assets/images/logo.svg';
 import profileAvatar from '../../assets/images/image-avatar.png';
+import Navbar from './Navbar';
 
 export default function Header() {
   return (
     <header className="flex items-center gap-10 mx-4 border-b-[1px] border-neutral-400">
-      <nav className="pt-8">
-        <ul className="flex gap-8">
-          <a href="#">
-            <img src={logo.src} alt="Sneakers logo" />{' '}
-          </a>
-          <NavLink label="Collections" />
-          <NavLink label="Men" />
-          <NavLink label="Women" />
-          <NavLink label="About" />
-          <NavLink label="Contact" />
-        </ul>
-      </nav>
+      <a href="#">
+        <img src={logo.src} alt="Sneakers logo" />{' '}
+      </a>
+      <Navbar />
       <button className="ml-auto">
         <svg
           className="group"
