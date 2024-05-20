@@ -10,7 +10,11 @@ interface IQuantitySelectProps {
 
 export default function QuantitySelect(props: IQuantitySelectProps) {
   return (
-    <div className="flex w-full items-center justify-between text-center gap-6 bg-neutral-100 rounded-lg py-2 px-3 font-bold sm:max-w-36">
+    <div
+      className="flex w-full items-center justify-between text-center
+     gap-1 bg-neutral-100 rounded-lg py-4 px-3 font-bold 
+     sm:max-w-36 md:py-2"
+    >
       <button onClick={props.onDecrement} className="hover:opacity-75">
         <img src={minusIcon.src} alt="Minus icon" />
       </button>

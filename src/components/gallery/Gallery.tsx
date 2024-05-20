@@ -10,13 +10,13 @@ interface IGalleryProps {}
 
 export default function Gallery(props: IGalleryProps) {
   return (
-    <div>
+    <div className="sm:max-w-sm sm:mx-auto sm:py-8">
       <img
         src={productImg01.src}
         alt="Highlighted product image"
-        className="rounded-xl mb-6"
+        className="aspect-[4/3] w-full object-cover mb-6 sm:rounded-xl sm:aspect-auto "
       />
-      <ul className="grid grid-cols-4 gap-6">
+      <ul className="hidden sm:grid grid-cols-4 gap-6">
         <GalleryThumbnail
           src={productImgThumbnail01.src}
           alt="Product image 1"

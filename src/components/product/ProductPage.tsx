@@ -5,7 +5,7 @@ interface IProductPageProps {}
 
 export default function ProductPage(props: IProductPageProps) {
   return (
-    <main className="grid grid-cols-2 px-10 py-14 items-center gap-24">
+    <main className="grid py-16 items-center md:gap-24 md:grid-cols-2 md:px-10">
       <Gallery />
       <ProductInfo />
     </main>
