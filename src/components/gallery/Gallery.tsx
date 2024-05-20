@@ -1,3 +1,5 @@
+import previousIcon from '../../assets/images/icon-previous.svg';
+import nextIcon from '../../assets/images/icon-next.svg';
 import productImg01 from '../../assets/images/image-product-1.jpg';
 import productImg02 from '../../assets/images/image-product-2.jpg';
 import productImg03 from '../../assets/images/image-product-3.jpg';
@@ -22,7 +24,17 @@ const productImages = [
 export default function Gallery(props: IGalleryProps) {
   const [activeImage, setActiveImage] = useState(0);
   return (
-    <div className="sm:max-w-sm sm:mx-auto sm:py-8">
+    <div className="relative sm:max-w-sm sm:mx-auto sm:py-8">
+      <button className="absolute left-4 bottom-1/2 bg-white size-10 rounded-full content-center sm:hidden">
+        <img
+          src={previousIcon.src}
+          alt="Previous icon"
+          className="mx-auto pr-1 max-h-4"
+        />
+      </button>
+      <button className="absolute right-4 bottom-1/2 bg-white size-10 rounded-full content-center sm:hidden">
+        <img src={nextIcon.src} alt="Next icon" className="mx-auto max-h-4" />
+      </button>
       <img
         src={productImages[activeImage].full}
         alt="Highlighted product image"
