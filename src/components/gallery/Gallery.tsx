@@ -32,6 +32,7 @@ export default function Gallery(props: IGalleryProps) {
         {Object.entries(productImages).map(([_, value], index) => {
           return (
             <GalleryThumbnail
+              key={index}
               src={value.thumbnail}
               alt={`Product image ${index + 1}`}
               isSelected={index === activeImage}
