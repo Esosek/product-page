@@ -1,3 +1,9 @@
+import { useState } from 'react';
+
+import GalleryThumbnail from './GalleryThumbnail';
+import Lightbox from './Lightbox';
+import ProductPrimaryImage from './ProductPrimaryImage';
+
 import previousIcon from '../../assets/images/icon-previous.svg';
 import nextIcon from '../../assets/images/icon-next.svg';
 import productImg01 from '../../assets/images/image-product-1.jpg';
@@ -8,9 +14,7 @@ import productImgThumbnail01 from '../../assets/images/image-product-1-thumbnail
 import productImgThumbnail02 from '../../assets/images/image-product-2-thumbnail.jpg';
 import productImgThumbnail03 from '../../assets/images/image-product-3-thumbnail.jpg';
 import productImgThumbnail04 from '../../assets/images/image-product-4-thumbnail.jpg';
-
-import GalleryThumbnail from './GalleryThumbnail';
-import { useState } from 'react';
+import GalleryThumbnailList from './GalleryThumbnailList';
 
 interface IGalleryProps {}
 
@@ -23,6 +27,7 @@ const PRODUCT_IMAGES = [
 
 export default function Gallery(props: IGalleryProps) {
   const [activeImage, setActiveImage] = useState(0);
+  const [isLightboxShown, setIsLightboxShown] = useState(false);
 
   function showPreviousImage() {
     setActiveImage((index) =>
@@ -35,55 +40,60 @@ export default function Gallery(props: IGalleryProps) {
       index === PRODUCT_IMAGES.length - 1 ? 0 : index + 1
     );
   }
-  return (
-    <div className="relative sm:max-w-sm sm:mx-auto sm:py-8">
-      <button
-        onClick={showPreviousImage}
-        className="absolute top-0 bottom-0 w-1/3 px-4 z-10 sm:hidden"
-      >
-        <div className="bg-white size-10 rounded-full content-center">
-          <img
-            src={previousIcon.src}
-            alt="Previous icon"
-            className="mx-auto pr-1 max-h-4"
-          />
-        </div>
-      </button>
-      <button
-        onClick={showNextImage}
-        className="absolute top-0 bottom-0 right-0 w-1/3 px-4 z-10 sm:hidden"
-      >
-        <div className="bg-white size-10 rounded-full content-center ml-auto">
-          <img src={nextIcon.src} alt="Next icon" className="mx-auto max-h-4" />
-        </div>
-      </button>
-      <div className="flex overflow-hidden mb-6 sm:rounded-xl">
-        {PRODUCT_IMAGES.map((value, index) => (
-          <img
-            key={value.full}
-            src={value.full}
-            alt={`Product image ${index + 1}`}
-            className="aspect-[4/3] w-full object-cover sm:aspect-auto transition-transform duration-300 ease-in-out"
-            style={{
-              transform: `translateX(${-100 * activeImage}%)`,
-            }}
-          />
-        ))}
-      </div>
 
-      <ul className="hidden sm:grid grid-cols-4 gap-6">
-        {PRODUCT_IMAGES.map((value, index) => {
-          return (
-            <GalleryThumbnail
-              key={index}
-              src={value.thumbnail}
-              alt={`Product image ${index + 1}`}
-              isSelected={index === activeImage}
-              onPress={() => setActiveImage(index)}
+  function showLightbox() {
+    const width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+    if (width < 768) return;
+    setIsLightboxShown(true);
+  }
+
+  function hideLightBox() {
+    setIsLightboxShown(false);
+  }
+
+  return (
+    <>
+      {isLightboxShown && <Lightbox onClose={hideLightBox} />}
+
+      <div className="relative sm:max-w-sm sm:mx-auto sm:py-8">
+        <button
+          onClick={showPreviousImage}
+          className="absolute top-0 bottom-0 w-1/3 px-4 z-10 sm:hidden"
+        >
+          <div className="bg-white size-10 rounded-full content-center">
+            <img
+              src={previousIcon.src}
+              alt="Previous icon"
+              className="mx-auto pr-1 max-h-4"
             />
-          );
-        })}
-      </ul>
-    </div>
+          </div>
+        </button>
+        <button
+          onClick={showNextImage}
+          className="absolute top-0 bottom-0 right-0 w-1/3 px-4 z-10 sm:hidden"
+        >
+          <div className="bg-white size-10 rounded-full content-center ml-auto">
+            <img
+              src={nextIcon.src}
+              alt="Next icon"
+              className="mx-auto max-h-4"
+            />
+          </div>
+        </button>
+        <button onClick={showLightbox}>
+          <ProductPrimaryImage
+            productImages={PRODUCT_IMAGES}
+            activeImage={activeImage}
+          />
+        </button>
+        <GalleryThumbnailList
+          productImages={PRODUCT_IMAGES}
+          activeIndex={activeImage}
+          onClick={(index) => {
+            setActiveImage(index);
+          }}
+        />
+      </div>
+    </>
   );
 }
