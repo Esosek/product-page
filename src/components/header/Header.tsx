@@ -24,8 +24,12 @@ export default function Header() {
           />
         </svg>
       </button>
-      <button className="rounded-full border-2 size-7 border-transparent hover:border-primary-400 transition-colors">
-        <img src={profileAvatar.src} alt="User avatar" className="max-h-10" />
+      <button className="rounded-full border-2 border-transparent hover:border-primary-400 transition-colors">
+        <img
+          src={profileAvatar.src}
+          alt="User avatar"
+          className="max-h-7 sm:max-h-10"
+        />
       </button>
     </header>
   );
