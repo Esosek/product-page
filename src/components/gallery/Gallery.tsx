@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 interface IGalleryProps {}
 
-const productImages = [
+const PRODUCT_IMAGES = [
   { full: productImg01.src, thumbnail: productImgThumbnail01.src },
   { full: productImg02.src, thumbnail: productImgThumbnail02.src },
   { full: productImg03.src, thumbnail: productImgThumbnail03.src },
@@ -23,25 +23,47 @@ const productImages = [
 
 export default function Gallery(props: IGalleryProps) {
   const [activeImage, setActiveImage] = useState(0);
+
+  function showPreviousImage() {
+    setActiveImage((index) =>
+      index === 0 ? PRODUCT_IMAGES.length - 1 : index - 1
+    );
+  }
+
+  function showNextImage() {
+    setActiveImage((index) =>
+      index === PRODUCT_IMAGES.length - 1 ? 0 : index + 1
+    );
+  }
   return (
     <div className="relative sm:max-w-sm sm:mx-auto sm:py-8">
-      <button className="absolute left-4 bottom-1/2 bg-white size-10 rounded-full content-center sm:hidden">
-        <img
-          src={previousIcon.src}
-          alt="Previous icon"
-          className="mx-auto pr-1 max-h-4"
-        />
+      <button
+        onClick={showPreviousImage}
+        className="absolute top-0 bottom-0 w-1/3 px-4 sm:hidden"
+      >
+        <div className="bg-white size-10 rounded-full content-center">
+          <img
+            src={previousIcon.src}
+            alt="Previous icon"
+            className="mx-auto pr-1 max-h-4"
+          />
+        </div>
       </button>
-      <button className="absolute right-4 bottom-1/2 bg-white size-10 rounded-full content-center sm:hidden">
-        <img src={nextIcon.src} alt="Next icon" className="mx-auto max-h-4" />
+      <button
+        onClick={showNextImage}
+        className="absolute top-0 bottom-0 right-0 w-1/3 px-4 sm:hidden"
+      >
+        <div className="bg-white size-10 rounded-full content-center ml-auto">
+          <img src={nextIcon.src} alt="Next icon" className="mx-auto max-h-4" />
+        </div>
       </button>
       <img
-        src={productImages[activeImage].full}
+        src={PRODUCT_IMAGES[activeImage].full}
         alt="Highlighted product image"
         className="aspect-[4/3] w-full object-cover mb-6 sm:rounded-xl sm:aspect-auto "
       />
       <ul className="hidden sm:grid grid-cols-4 gap-6">
-        {Object.entries(productImages).map(([_, value], index) => {
+        {Object.entries(PRODUCT_IMAGES).map(([_, value], index) => {
           return (
             <GalleryThumbnail
               key={index}
