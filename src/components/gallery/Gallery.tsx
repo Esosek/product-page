@@ -39,7 +39,7 @@ export default function Gallery(props: IGalleryProps) {
     <div className="relative sm:max-w-sm sm:mx-auto sm:py-8">
       <button
         onClick={showPreviousImage}
-        className="absolute top-0 bottom-0 w-1/3 px-4 sm:hidden"
+        className="absolute top-0 bottom-0 w-1/3 px-4 z-10 sm:hidden"
       >
         <div className="bg-white size-10 rounded-full content-center">
           <img
@@ -51,18 +51,24 @@ export default function Gallery(props: IGalleryProps) {
       </button>
       <button
         onClick={showNextImage}
-        className="absolute top-0 bottom-0 right-0 w-1/3 px-4 sm:hidden"
+        className="absolute top-0 bottom-0 right-0 w-1/3 px-4 z-10 sm:hidden"
       >
         <div className="bg-white size-10 rounded-full content-center ml-auto">
           <img src={nextIcon.src} alt="Next icon" className="mx-auto max-h-4" />
         </div>
       </button>
-      <div>
-        <img
-          src={PRODUCT_IMAGES[activeImage].full}
-          alt="Highlighted product image"
-          className="aspect-[4/3] w-full object-cover mb-6 sm:rounded-xl sm:aspect-auto "
-        />
+      <div className="flex overflow-hidden mb-6 sm:rounded-xl">
+        {PRODUCT_IMAGES.map((value, index) => (
+          <img
+            key={value.full}
+            src={value.full}
+            alt={`Product image ${index + 1}`}
+            className="aspect-[4/3] w-full object-cover sm:aspect-auto transition-[translate] duration-300 ease-in-out"
+            style={{
+              translate: `${-100 * activeImage}%`,
+            }}
+          />
+        ))}
       </div>
 
       <ul className="hidden sm:grid grid-cols-4 gap-6">
