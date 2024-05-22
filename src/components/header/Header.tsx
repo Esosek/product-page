@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 export default function Header() {
   return (
-    <header className="flex items-center fixed h-16 bg-white gap-6 top-0 left-0 right-0 py-4 px-6 md:static md:h-auto md:gap-10 md:border-b-[1px] md:border-neutral-400 md:p-0">
+    <header className="flex items-center z-30 fixed h-16 bg-white gap-6 top-0 left-0 right-0 py-4 px-6 md:static md:h-auto md:gap-10 md:border-b-[1px] md:border-neutral-400 md:p-0">
       <a href="#">
         <img src={logo.src} alt="Sneakers logo" />{' '}
       </a>

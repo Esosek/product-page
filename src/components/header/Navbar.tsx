@@ -38,7 +38,7 @@ export default function Navbar(props: INavbarProps) {
       <nav
         className={`${
           !isOpen && '-translate-x-full'
-        } fixed top-0 bottom-0 left-0 w-2/3 bg-white z-30 p-6 transition-transform duration-500 md:p-0 md:static md:translate-x-0 md:transition-none`}
+        } fixed top-0 bottom-0 left-0 w-2/3 bg-white p-6 transition-transform duration-500 md:p-0 md:static md:translate-x-0 md:transition-none`}
       >
         <button onClick={() => setIsOpen(false)} className="md:hidden pb-14">
           <img src={closeIcon.src} alt="Close icon" />

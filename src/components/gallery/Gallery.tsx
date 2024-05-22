@@ -63,9 +63,9 @@ export default function Gallery(props: IGalleryProps) {
             key={value.full}
             src={value.full}
             alt={`Product image ${index + 1}`}
-            className="aspect-[4/3] w-full object-cover sm:aspect-auto transition-[translate] duration-300 ease-in-out"
+            className="aspect-[4/3] w-full object-cover sm:aspect-auto transition-transform duration-300 ease-in-out"
             style={{
-              translate: `${-100 * activeImage}%`,
+              transform: `translateX(${-100 * activeImage}%)`,
             }}
           />
         ))}
