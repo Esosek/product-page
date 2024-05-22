@@ -57,13 +57,16 @@ export default function Gallery(props: IGalleryProps) {
           <img src={nextIcon.src} alt="Next icon" className="mx-auto max-h-4" />
         </div>
       </button>
-      <img
-        src={PRODUCT_IMAGES[activeImage].full}
-        alt="Highlighted product image"
-        className="aspect-[4/3] w-full object-cover mb-6 sm:rounded-xl sm:aspect-auto "
-      />
+      <div>
+        <img
+          src={PRODUCT_IMAGES[activeImage].full}
+          alt="Highlighted product image"
+          className="aspect-[4/3] w-full object-cover mb-6 sm:rounded-xl sm:aspect-auto "
+        />
+      </div>
+
       <ul className="hidden sm:grid grid-cols-4 gap-6">
-        {Object.entries(PRODUCT_IMAGES).map(([_, value], index) => {
+        {PRODUCT_IMAGES.map((value, index) => {
           return (
             <GalleryThumbnail
               key={index}
