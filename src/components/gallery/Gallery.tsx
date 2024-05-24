@@ -1,44 +1,30 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
-import GalleryThumbnail from './GalleryThumbnail';
 import Lightbox from './Lightbox';
 import ProductPrimaryImage from './ProductPrimaryImage';
 
 import previousIcon from '../../assets/images/icon-previous.svg';
 import nextIcon from '../../assets/images/icon-next.svg';
-import productImg01 from '../../assets/images/image-product-1.jpg';
-import productImg02 from '../../assets/images/image-product-2.jpg';
-import productImg03 from '../../assets/images/image-product-3.jpg';
-import productImg04 from '../../assets/images/image-product-4.jpg';
-import productImgThumbnail01 from '../../assets/images/image-product-1-thumbnail.jpg';
-import productImgThumbnail02 from '../../assets/images/image-product-2-thumbnail.jpg';
-import productImgThumbnail03 from '../../assets/images/image-product-3-thumbnail.jpg';
-import productImgThumbnail04 from '../../assets/images/image-product-4-thumbnail.jpg';
+
 import GalleryThumbnailList from './GalleryThumbnailList';
+import { GalleryContext } from '../../context/GalleryContext';
 
-interface IGalleryProps {}
-
-const PRODUCT_IMAGES = [
-  { full: productImg01.src, thumbnail: productImgThumbnail01.src },
-  { full: productImg02.src, thumbnail: productImgThumbnail02.src },
-  { full: productImg03.src, thumbnail: productImgThumbnail03.src },
-  { full: productImg04.src, thumbnail: productImgThumbnail04.src },
-];
-
-export default function Gallery(props: IGalleryProps) {
-  const [activeImage, setActiveImage] = useState(0);
+export default function Gallery() {
   const [isLightboxShown, setIsLightboxShown] = useState(false);
+  const galleryContext = useContext(GalleryContext);
 
   function showPreviousImage() {
-    setActiveImage((index) =>
-      index === 0 ? PRODUCT_IMAGES.length - 1 : index - 1
-    );
+    const selectedIndex = galleryContext.selectedIndex;
+    if (selectedIndex === 0) {
+      galleryContext.setSelectedIndex(galleryContext.images.length - 1);
+    } else galleryContext.setSelectedIndex(selectedIndex - 1);
   }
 
   function showNextImage() {
-    setActiveImage((index) =>
-      index === PRODUCT_IMAGES.length - 1 ? 0 : index + 1
-    );
+    const selectedIndex = galleryContext.selectedIndex;
+    if (selectedIndex >= galleryContext.images.length - 1) {
+      galleryContext.setSelectedIndex(0);
+    } else galleryContext.setSelectedIndex(selectedIndex + 1);
   }
 
   function showLightbox() {
@@ -81,18 +67,9 @@ export default function Gallery(props: IGalleryProps) {
           </div>
         </button>
         <button onClick={showLightbox}>
-          <ProductPrimaryImage
-            productImages={PRODUCT_IMAGES}
-            activeImage={activeImage}
-          />
+          <ProductPrimaryImage />
         </button>
-        <GalleryThumbnailList
-          productImages={PRODUCT_IMAGES}
-          activeIndex={activeImage}
-          onClick={(index) => {
-            setActiveImage(index);
-          }}
-        />
+        <GalleryThumbnailList />
       </div>
     </>
   );

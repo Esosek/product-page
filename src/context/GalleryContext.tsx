@@ -1,4 +1,5 @@
 import { createContext, useState, type ReactNode } from 'react';
+import PRODUCT_IMAGES from '../data/productImages';
 
 type ImagesType = {
   full: string;
@@ -12,16 +13,21 @@ interface GalleryContextType {
   setSelectedIndex: (index: number) => void;
 }
 
-const GalleryContext = createContext<GalleryContextType | undefined>(undefined);
+const defaultValue: GalleryContextType = {
+  images: PRODUCT_IMAGES,
+  setImages: () => {},
+  selectedIndex: 0,
+  setSelectedIndex: () => {},
+};
+
+const GalleryContext = createContext<GalleryContextType>(defaultValue);
 
 interface GalleryProviderProps {
   children: ReactNode;
 }
 
 function GalleryProvider({ children }: GalleryProviderProps) {
-  const [images, setImages] = useState<ImagesType[]>([
-    { full: '', thumbnail: '' },
-  ]);
+  const [images, setImages] = useState<ImagesType[]>(PRODUCT_IMAGES);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const gallery = {

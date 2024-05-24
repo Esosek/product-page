@@ -1,19 +1,18 @@
-interface IProductPrimaryImageProps {
-  productImages: { full: string; thumbnail: string }[];
-  activeImage: number;
-}
+import { useContext } from 'react';
+import { GalleryContext } from '../../context/GalleryContext';
 
-export default function ProductPrimaryImage(props: IProductPrimaryImageProps) {
+export default function ProductPrimaryImage() {
+  const galleryContext = useContext(GalleryContext);
   return (
     <div className="flex overflow-hidden mb-6 sm:rounded-xl">
-      {props.productImages.map((value, index) => (
+      {galleryContext.images.map((value, index) => (
         <img
           key={value.full}
           src={value.full}
           alt={`Product image ${index + 1}`}
           className="aspect-[4/3] w-full object-cover sm:aspect-auto transition-transform duration-300 ease-in-out"
           style={{
-            transform: `translateX(${-100 * props.activeImage}%)`,
+            transform: `translateX(${-100 * galleryContext.selectedIndex}%)`,
           }}
         />
       ))}

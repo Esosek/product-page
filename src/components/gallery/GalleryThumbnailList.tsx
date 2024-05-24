@@ -1,25 +1,19 @@
-import type { MouseEventHandler } from 'react';
+import { useContext } from 'react';
+import { GalleryContext } from '../../context/GalleryContext';
 import GalleryThumbnail from './GalleryThumbnail';
 
-interface IGalleryThumbnailListProps {
-  productImages: { full: string; thumbnail: string }[];
-  activeIndex: number;
-  onClick: (index: number) => void;
-}
-
-export default function GalleryThumbnailList(
-  props: IGalleryThumbnailListProps
-) {
+export default function GalleryThumbnailList() {
+  const galleryContext = useContext(GalleryContext);
   return (
     <ul className="hidden sm:grid grid-cols-4 gap-6">
-      {props.productImages.map((value, index) => {
+      {galleryContext.images.map((value, index) => {
         return (
           <GalleryThumbnail
             key={index}
             src={value.thumbnail}
             alt={`Product image ${index + 1}`}
-            isSelected={index === props.activeIndex}
-            onPress={() => props.onClick(index)}
+            isSelected={index === galleryContext.selectedIndex}
+            onPress={() => galleryContext.setSelectedIndex(index)}
           />
         );
       })}

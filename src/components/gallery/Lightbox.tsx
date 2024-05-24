@@ -1,4 +1,6 @@
-import type { MouseEventHandler } from 'react';
+import { type MouseEventHandler } from 'react';
+import ProductPrimaryImage from './ProductPrimaryImage';
+import GalleryThumbnailList from './GalleryThumbnailList';
 
 interface ILightboxProps {
   onClose?: MouseEventHandler;
@@ -6,6 +8,20 @@ interface ILightboxProps {
 
 export default function Lightbox(props: ILightboxProps) {
   return (
-    <div className="fixed top-0 left-0 w-full h-lvh z-10 bg-black/75"></div>
+    <div className="fixed top-0 left-0 w-full h-lvh z-10 flex items-center justify-center bg-black/75">
+      <div className="flex flex-col max-w-lg gap-4">
+        <button onClick={props.onClose} className="ml-auto">
+          <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+              fill="#FFF"
+              fillRule="evenodd"
+            />
+          </svg>
+        </button>
+        <ProductPrimaryImage />
+        <GalleryThumbnailList />
+      </div>
+    </div>
   );
 }
