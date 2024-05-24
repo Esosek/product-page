@@ -1,27 +1,27 @@
 import { createContext, useState, type ReactNode } from 'react';
 
+type ImagesType = {
+  full: string;
+  thumbnail: string;
+};
+
 interface GalleryContextType {
-  images: string[];
-  setImages: (images: string[]) => void;
+  images: ImagesType[];
+  setImages: (images: ImagesType[]) => void;
   selectedIndex: number;
   setSelectedIndex: (index: number) => void;
 }
 
-const defaultValue: GalleryContextType = {
-  images: [''],
-  setImages: () => {},
-  selectedIndex: 0,
-  setSelectedIndex: () => {},
-};
-
-const GalleryContext = createContext<GalleryContextType>(defaultValue);
+const GalleryContext = createContext<GalleryContextType | undefined>(undefined);
 
 interface GalleryProviderProps {
   children: ReactNode;
 }
 
 function GalleryProvider({ children }: GalleryProviderProps) {
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<ImagesType[]>([
+    { full: '', thumbnail: '' },
+  ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const gallery = {
