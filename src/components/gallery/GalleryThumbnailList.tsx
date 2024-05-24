@@ -5,7 +5,7 @@ import GalleryThumbnail from './GalleryThumbnail';
 export default function GalleryThumbnailList() {
   const galleryContext = useContext(GalleryContext);
   return (
-    <ul className="hidden sm:grid grid-cols-4 gap-6">
+    <ul className="hidden mt-4 sm:flex sm:justify-center gap-6">
       {galleryContext.images.map((value, index) => {
         return (
           <GalleryThumbnail

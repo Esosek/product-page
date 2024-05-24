@@ -4,7 +4,7 @@ import { GalleryContext } from '../../context/GalleryContext';
 export default function ProductPrimaryImage() {
   const galleryContext = useContext(GalleryContext);
   return (
-    <div className="flex overflow-hidden mb-6 sm:rounded-xl">
+    <div className="flex overflow-hidden sm:rounded-xl">
       {galleryContext.images.map((value, index) => (
         <img
           key={value.full}
