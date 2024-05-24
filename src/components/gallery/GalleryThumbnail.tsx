@@ -16,9 +16,9 @@ export default function GalleryThumbnail({
   const selectedClasses = isSelected && 'outline outline-2 outline-primary-400';
   return (
     <li
-      className={` rounded-xl overflow-clip aspect-square ${selectedClasses}`}
+      className={`max-h-20 rounded-xl overflow-clip aspect-square ${selectedClasses}`}
     >
-      <button onClick={onPress}>
+      <button onClick={onPress} className="bg-white">
         <img
           src={src}
           alt={alt}
