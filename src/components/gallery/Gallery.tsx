@@ -8,6 +8,7 @@ import nextIcon from '../../assets/images/icon-next.svg';
 
 import GalleryThumbnailList from './GalleryThumbnailList';
 import { GalleryContext } from '../../context/GalleryContext';
+import ImageControl from './ImageControl';
 
 export default function Gallery() {
   const [isLightboxShown, setIsLightboxShown] = useState(false);
@@ -42,30 +43,8 @@ export default function Gallery() {
       {isLightboxShown && <Lightbox onClose={hideLightBox} />}
 
       <div className="relative sm:max-w-sm sm:mx-auto sm:py-8">
-        <button
-          onClick={showPreviousImage}
-          className="absolute top-0 bottom-0 w-1/3 px-4 z-10 sm:hidden"
-        >
-          <div className="bg-white size-10 rounded-full content-center">
-            <img
-              src={previousIcon.src}
-              alt="Previous icon"
-              className="mx-auto pr-1 max-h-4"
-            />
-          </div>
-        </button>
-        <button
-          onClick={showNextImage}
-          className="absolute top-0 bottom-0 right-0 w-1/3 px-4 z-10 sm:hidden"
-        >
-          <div className="bg-white size-10 rounded-full content-center ml-auto">
-            <img
-              src={nextIcon.src}
-              alt="Next icon"
-              className="mx-auto max-h-4"
-            />
-          </div>
-        </button>
+        <ImageControl onClick={showPreviousImage} />
+        <ImageControl isRight={true} onClick={showNextImage} />
         <button onClick={showLightbox}>
           <ProductPrimaryImage />
         </button>
