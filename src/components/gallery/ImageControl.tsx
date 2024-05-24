@@ -27,7 +27,7 @@ export default function ImageControl(props: IImageControlProps) {
   return (
     <button
       onClick={props.isRight ? showNextImage : showPreviousImage}
-      className={`absolute top-0 bottom-0 w-1/3 z-10 ${props.extraStyles} ${
+      className={`absolute z-10 ${props.extraStyles} ${
         props.isRight ? 'right-0' : ''
       }`}
     >

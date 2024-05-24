@@ -24,8 +24,11 @@ export default function Gallery() {
       {isLightboxShown && <Lightbox onClose={hideLightBox} />}
 
       <div className="relative sm:max-w-sm sm:mx-auto sm:py-8">
-        <ImageControl extraStyles="px-4 sm:hidden" />
-        <ImageControl isRight={true} extraStyles="px-4 sm:hidden" />
+        <ImageControl extraStyles="top-0 bottom-0 w-1/3 px-4 sm:hidden" />
+        <ImageControl
+          isRight={true}
+          extraStyles="top-0 bottom-0 w-1/3 px-4 sm:hidden"
+        />
         <button onClick={showLightbox}>
           <ProductPrimaryImage />
         </button>
