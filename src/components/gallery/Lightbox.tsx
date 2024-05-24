@@ -1,6 +1,7 @@
 import { type MouseEventHandler } from 'react';
 import ProductPrimaryImage from './ProductPrimaryImage';
 import GalleryThumbnailList from './GalleryThumbnailList';
+import ImageControl from './ImageControl';
 
 interface ILightboxProps {
   onClose?: MouseEventHandler;
@@ -9,7 +10,7 @@ interface ILightboxProps {
 export default function Lightbox(props: ILightboxProps) {
   return (
     <div className="fixed top-0 left-0 w-full h-lvh z-10 flex items-center justify-center bg-black/75">
-      <div className="flex flex-col max-w-md gap-4">
+      <div className="flex relative flex-col max-w-md gap-4">
         <button onClick={props.onClose} className="ml-auto">
           <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -20,7 +21,10 @@ export default function Lightbox(props: ILightboxProps) {
           </svg>
         </button>
 
-        <ProductPrimaryImage />
+        <ProductPrimaryImage>
+          <ImageControl extraStyles="-left-5" />
+          <ImageControl isRight={true} extraStyles="-right-5" />
+        </ProductPrimaryImage>
         <GalleryThumbnailList />
       </div>
     </div>

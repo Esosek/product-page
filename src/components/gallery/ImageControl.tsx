@@ -1,16 +1,33 @@
+import { useContext } from 'react';
 import previousIcon from '../../assets/images/icon-previous.svg';
 import nextIcon from '../../assets/images/icon-next.svg';
+import { GalleryContext } from '../../context/GalleryContext';
 
 interface IImageControlProps {
   isRight?: boolean;
-  onClick?: () => void;
+  extraStyles?: string;
 }
 
 export default function ImageControl(props: IImageControlProps) {
+  const galleryContext = useContext(GalleryContext);
+
+  function showPreviousImage() {
+    const selectedIndex = galleryContext.selectedIndex;
+    if (selectedIndex === 0) {
+      galleryContext.setSelectedIndex(galleryContext.images.length - 1);
+    } else galleryContext.setSelectedIndex(selectedIndex - 1);
+  }
+
+  function showNextImage() {
+    const selectedIndex = galleryContext.selectedIndex;
+    if (selectedIndex >= galleryContext.images.length - 1) {
+      galleryContext.setSelectedIndex(0);
+    } else galleryContext.setSelectedIndex(selectedIndex + 1);
+  }
   return (
     <button
-      onClick={props.onClick}
-      className={`absolute top-0 bottom-0 w-1/3 px-4 z-10 sm:hidden ${
+      onClick={props.isRight ? showNextImage : showPreviousImage}
+      className={`absolute top-0 bottom-0 w-1/3 z-10 ${props.extraStyles} ${
         props.isRight ? 'right-0' : ''
       }`}
     >
