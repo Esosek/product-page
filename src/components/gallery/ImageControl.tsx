@@ -27,7 +27,7 @@ export default function ImageControl(props: IImageControlProps) {
   return (
     <button
       onClick={props.isRight ? showNextImage : showPreviousImage}
-      className={`absolute z-10 ${props.extraStyles}`}
+      className={`absolute z-10 hover:scale-110 transition-transform ${props.extraStyles}`}
     >
       <div
         className={`bg-white size-10 rounded-full content-center ${
