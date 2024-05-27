@@ -11,7 +11,7 @@ export default function Gallery() {
 
   function showLightbox() {
     const width = window.innerWidth > 0 ? window.innerWidth : screen.width;
-    if (width < 768) return;
+    if (width < 640) return;
     setIsLightboxShown(true);
   }
 
@@ -27,7 +27,7 @@ export default function Gallery() {
         <ImageControl extraStyles="top-0 bottom-0 w-1/3 px-4 sm:hidden" />
         <ImageControl
           isRight={true}
-          extraStyles="top-0 bottom-0 w-1/3 px-4 sm:hidden"
+          extraStyles="top-0 bottom-0 w-1/3 px-4 right-0 sm:hidden"
         />
         <button onClick={showLightbox}>
           <ProductPrimaryImage />
