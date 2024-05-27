@@ -27,18 +27,28 @@ export default function ImageControl(props: IImageControlProps) {
   return (
     <button
       onClick={props.isRight ? showNextImage : showPreviousImage}
-      className={`absolute z-10 hover:scale-110 transition-transform ${props.extraStyles}`}
+      className={`absolute z-10 group transition-colors ${props.extraStyles}`}
     >
       <div
-        className={`bg-white size-10 rounded-full content-center ${
-          props.isRight ? 'ml-auto' : ''
+        className={`bg-white size-10 group rounded-full content-center ${
+          props.isRight ? 'ml-auto pl-[2px]' : 'pr-1'
         }`}
       >
-        <img
-          src={props.isRight ? nextIcon.src : previousIcon.src}
-          alt="Previous icon"
-          className={`mx-auto max-h-4 ${props.isRight ? 'pl-[2px]' : 'pr-1'}`}
-        />
+        <svg
+          width="13"
+          height="18"
+          xmlns="http://www.w3.org/2000/svg"
+          className="mx-auto"
+        >
+          <path
+            d={props.isRight ? 'm2 1 8 8-8 8' : 'M11 1 3 9l8 8'}
+            stroke={'#1D2026'}
+            stroke-width="3"
+            fill="none"
+            fillRule="evenodd"
+            className="group-hover:stroke-primary-400 transition-colors"
+          />
+        </svg>
       </div>
     </button>
   );
