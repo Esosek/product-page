@@ -13,7 +13,7 @@ export default function ProductPage({ product }: ProductPageProps) {
       <GalleryProvider images={product.images}>
         <Gallery />
       </GalleryProvider>
-      <ProductInfo />
+      <ProductInfo product={product} />
     </main>
   );
 }

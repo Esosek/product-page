@@ -21,7 +21,7 @@ export default function CartContextProvider({ children }: PropsWithChildren) {
   function addProduct(product: ProductType) {
     setProducts((prevValue) => {
       const existingProductIndex = prevValue.findIndex(
-        (p) => p.productId === product.productId
+        (p) => p.id === product.id
       );
       if (existingProductIndex !== -1) {
         const updatedProducts = [...products];

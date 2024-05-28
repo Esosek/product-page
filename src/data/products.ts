@@ -8,18 +8,23 @@ import productImgThumbnail03 from '../assets/images/image-product-3-thumbnail.jp
 import productImgThumbnail04 from '../assets/images/image-product-4-thumbnail.jpg';
 
 export type ProductType = {
-  productId: number;
-  productName: string;
+  id: number;
+  name: string;
+  description: string;
   price: number;
+  originalPrice: number;
   quantity: number;
   images: { full: string; thumbnail: string }[];
 };
 
 const PRODUCTS: ProductType[] = [
   {
-    productId: 0,
-    productName: 'Fall Limited Edition Sneakers',
+    id: 0,
+    name: 'Fall Limited Edition Sneakers',
+    description:
+      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weathe can offer.",
     price: 125,
+    originalPrice: 250,
     quantity: 0,
     images: [
       { full: productImg01.src, thumbnail: productImgThumbnail01.src },

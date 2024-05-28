@@ -1,30 +1,31 @@
 import { useState } from 'react';
 import QuantitySelect from './QuantitySelect';
 import PrimaryButton from '../PrimaryButton';
+import type { ProductType } from '../../data/products';
 
-export default function ProductInfo() {
+type ProductInfoProps = {
+  product: ProductType;
+};
+
+export default function ProductInfo({ product }: ProductInfoProps) {
   const [productCount, setProductCount] = useState(0);
   return (
     <div className="px-6 md:px-0">
       <p className="uppercase text-primary-400 tracking-widest font-bold">
         Sneaker company
       </p>
-      <h1 className="text-4xl font-bold my-4 sm:mb-8">
-        Fall Limited Edition Sneakers
-      </h1>
-      <p className="text-neutral-700 mb-4">
-        These low-profile sneakers are your perfect casual wear companion.
-        Featuring a durable rubber outer sole, they'll withstand everything the
-        weathe can offer.
-      </p>
+      <h1 className="text-4xl font-bold my-4 sm:mb-8">{product.name}</h1>
+      <p className="text-neutral-700 mb-4">{product.description}</p>
       <div className="flex items-center justify-between mb-8 sm:block">
         <div className="flex gap-4 items-center">
-          <p className="font-bold text-2xl">$125.00</p>
+          <p className="font-bold text-2xl">${product.price.toFixed(2)}</p>
           <p className="bg-primary-300 text-primary-400 px-2 rounded-md font-bold">
-            50%
+            {((product.price / product.originalPrice) * 100).toFixed(0)}%
           </p>
         </div>
-        <p className="line-through text-neutral-400">$250.00</p>
+        <p className="line-through text-neutral-400">
+          ${product.originalPrice.toFixed(2)}
+        </p>
       </div>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-[1fr_2fr]">
         <QuantitySelect
