@@ -13,23 +13,23 @@ type GalleryContextType = {
 };
 
 type GalleryProviderProps = {
-  product: ProductType;
+  images: ImagesType[];
   children: ReactNode;
 };
 
 const defaultValue: GalleryContextType = {
-  images: PRODUCTS[0].images,
+  images: [],
   selectedIndex: 0,
   setSelectedIndex: () => {},
 };
 
 const GalleryContext = createContext<GalleryContextType>(defaultValue);
 
-function GalleryProvider({ product, children }: GalleryProviderProps) {
+function GalleryProvider({ images, children }: GalleryProviderProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const gallery = {
-    images: product.images,
+    images,
     selectedIndex,
     setSelectedIndex,
   };
