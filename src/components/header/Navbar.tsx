@@ -5,9 +5,7 @@ import NavLink from './NavLink';
 import closeIcon from '../../assets/images/icon-close.svg';
 import menuIcon from '../../assets/images/icon-menu.svg';
 
-interface INavbarProps {}
-
-export default function Navbar(props: INavbarProps) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const backdropRef = useRef<HTMLDivElement>(null);

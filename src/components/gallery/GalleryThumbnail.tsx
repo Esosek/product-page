@@ -1,18 +1,18 @@
 import type { MouseEventHandler } from 'react';
 
-interface IGalleryThumbnailProps {
+type GalleryThumbnailProps = {
   src: string;
   alt?: string;
   isSelected?: boolean;
   onPress?: MouseEventHandler;
-}
+};
 
 export default function GalleryThumbnail({
   src,
   alt = '',
   isSelected = false,
   onPress,
-}: IGalleryThumbnailProps) {
+}: GalleryThumbnailProps) {
   const selectedClasses = isSelected && 'outline outline-2 outline-primary-400';
   return (
     <li

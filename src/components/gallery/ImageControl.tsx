@@ -1,14 +1,12 @@
 import { useContext } from 'react';
-import previousIcon from '../../assets/images/icon-previous.svg';
-import nextIcon from '../../assets/images/icon-next.svg';
 import { GalleryContext } from '../../context/GalleryContext';
 
-interface IImageControlProps {
+type ImageControlProps = {
   isRight?: boolean;
   extraStyles?: string;
-}
+};
 
-export default function ImageControl(props: IImageControlProps) {
+export default function ImageControl(props: ImageControlProps) {
   const galleryContext = useContext(GalleryContext);
 
   function showPreviousImage() {

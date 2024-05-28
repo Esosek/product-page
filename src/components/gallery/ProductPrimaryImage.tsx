@@ -1,13 +1,7 @@
-import { useContext, type ReactNode } from 'react';
+import { useContext, type PropsWithChildren, type ReactNode } from 'react';
 import { GalleryContext } from '../../context/GalleryContext';
 
-interface IProductPrimaryImageProps {
-  children?: ReactNode;
-}
-
-export default function ProductPrimaryImage({
-  children,
-}: IProductPrimaryImageProps) {
+export default function ProductPrimaryImage({ children }: PropsWithChildren) {
   const galleryContext = useContext(GalleryContext);
   return (
     <div className="relative">

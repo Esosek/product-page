@@ -6,11 +6,16 @@ type ImagesType = {
   thumbnail: string;
 };
 
-interface GalleryContextType {
+type GalleryContextType = {
   images: ImagesType[];
   selectedIndex: number;
   setSelectedIndex: (index: number) => void;
-}
+};
+
+type GalleryProviderProps = {
+  product: ProductType;
+  children: ReactNode;
+};
 
 const defaultValue: GalleryContextType = {
   images: PRODUCTS[0].images,
@@ -19,11 +24,6 @@ const defaultValue: GalleryContextType = {
 };
 
 const GalleryContext = createContext<GalleryContextType>(defaultValue);
-
-interface GalleryProviderProps {
-  product: ProductType;
-  children: ReactNode;
-}
 
 function GalleryProvider({ product, children }: GalleryProviderProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);

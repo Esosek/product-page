@@ -2,13 +2,13 @@ import plusIcon from '../../assets/images/icon-plus.svg';
 import minusIcon from '../../assets/images/icon-minus.svg';
 import type { MouseEventHandler } from 'react';
 
-interface IQuantitySelectProps {
+type QuantitySelectProps = {
   value: number;
   onIncrement?: MouseEventHandler;
   onDecrement?: MouseEventHandler;
-}
+};
 
-export default function QuantitySelect(props: IQuantitySelectProps) {
+export default function QuantitySelect(props: QuantitySelectProps) {
   return (
     <div
       className="flex w-full items-center justify-between text-center

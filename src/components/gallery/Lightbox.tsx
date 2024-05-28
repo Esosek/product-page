@@ -3,11 +3,11 @@ import ProductPrimaryImage from './ProductPrimaryImage';
 import GalleryThumbnailList from './GalleryThumbnailList';
 import ImageControl from './ImageControl';
 
-interface ILightboxProps {
+type LightboxProps = {
   onClose?: MouseEventHandler;
-}
+};
 
-export default function Lightbox(props: ILightboxProps) {
+export default function Lightbox(props: LightboxProps) {
   return (
     <div className="fixed top-0 left-0 w-full h-lvh z-10 flex items-center justify-center bg-black/75">
       <div className="flex relative flex-col max-w-md gap-4">

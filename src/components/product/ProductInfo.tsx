@@ -2,9 +2,7 @@ import { useState } from 'react';
 import QuantitySelect from './QuantitySelect';
 import PrimaryButton from '../PrimaryButton';
 
-interface IProductInfoProps {}
-
-export default function ProductInfo(props: IProductInfoProps) {
+export default function ProductInfo() {
   const [productCount, setProductCount] = useState(0);
   return (
     <div className="px-6 md:px-0">

@@ -1,11 +1,11 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-interface IPrimaryButtonProps {
+type PrimaryButtonProps = {
   children?: ReactNode;
   onClick?: MouseEventHandler;
-}
+};
 
-export default function PrimaryButton(props: IPrimaryButtonProps) {
+export default function PrimaryButton(props: PrimaryButtonProps) {
   return (
     <button
       onClick={props.onClick}
