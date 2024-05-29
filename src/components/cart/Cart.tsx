@@ -45,12 +45,12 @@ export default function Cart() {
                   return (
                     <li
                       key={product.id}
-                      className="grid grid-cols-[2fr_auto_1fr] justify-items-center items-center gap-4"
+                      className="grid grid-cols-[auto_1fr_auto] items-center gap-4"
                     >
                       <img
                         src={product.images[0].thumbnail}
                         alt="Product thumbnail"
-                        className="rounded-md"
+                        className="rounded-md max-w-[3.25rem]"
                       />
                       <div className="text-neutral-700 text-sm">
                         <p>{product.name}</p>
