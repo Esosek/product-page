@@ -8,7 +8,16 @@ export default function Cart() {
 
   return (
     <>
-      <button onClick={() => setIsShown(!isShown)} className="block ml-auto">
+      <button
+        onClick={() => setIsShown(!isShown)}
+        className="block relative ml-auto"
+      >
+        {cartContext.products.length !== 0 && (
+          <div className="absolute -top-2 -right-2 bg-primary-400 rounded-full text-neutral-100 text-[0.6rem] px-2">
+            {cartContext.products.reduce((acc, item) => acc + item.quantity, 0)}
+          </div>
+        )}
+
         <svg
           className="group"
           aria-label="Cart icon"
