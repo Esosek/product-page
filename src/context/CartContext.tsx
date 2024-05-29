@@ -13,7 +13,7 @@ const defaultValue: CartContextType = {
   clear: () => {},
 };
 
-const CartContext = createContext(defaultValue);
+export const CartContext = createContext(defaultValue);
 
 export default function CartContextProvider({ children }: PropsWithChildren) {
   const [products, setProducts] = useState<ProductType[]>([]);

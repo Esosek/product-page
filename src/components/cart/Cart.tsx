@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 export default function Cart() {
   const [isShown, setIsShown] = useState(false);
+  const cartContext = useContext(CartContext);
   return (
     <>
       <button onClick={() => setIsShown(!isShown)} className="block ml-auto">
@@ -24,11 +26,13 @@ export default function Cart() {
           <h2 className="font-bold border-neutral-400 border-b-[1px] p-4">
             Cart
           </h2>
-          <div className="flex-grow content-center">
-            <p className="flex-grow text-center text-neutral-700">
-              Your cart is empty.
-            </p>
-          </div>
+          {cartContext.products.length === 0 && (
+            <div className="flex-grow content-center">
+              <p className="flex-grow text-center text-neutral-700">
+                Your cart is empty.
+              </p>
+            </div>
+          )}
         </div>
       )}
     </>
