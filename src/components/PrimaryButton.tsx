@@ -11,7 +11,7 @@ export default function PrimaryButton(props: PrimaryButtonProps) {
       onClick={props.onClick}
       className="flex justify-center items-center gap-4 w-full 
       bg-primary-400 text-white py-4 px-3 rounded-lg 
-      shadow-xl shadow-primary-400/50 
+      shadow-lg shadow-primary-400/50 
       hover:opacity-75 transition-opacity md:p-3"
     >
       {props.children}
