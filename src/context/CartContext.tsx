@@ -3,14 +3,14 @@ import type { ProductType } from '../data/products';
 
 type CartContextType = {
   products: ProductType[];
-  addProduct: (product: ProductType) => void;
-  clear: () => void;
+  addProduct: (product: ProductType, quantity: number) => void;
+  removeProduct: (product: ProductType) => void;
 };
 
 const defaultValue: CartContextType = {
   products: [],
   addProduct: () => {},
-  clear: () => {},
+  removeProduct: () => {},
 };
 
 export const CartContext = createContext(defaultValue);
@@ -18,7 +18,7 @@ export const CartContext = createContext(defaultValue);
 export default function CartContextProvider({ children }: PropsWithChildren) {
   const [products, setProducts] = useState<ProductType[]>([]);
 
-  function addProduct(product: ProductType) {
+  function addProduct(product: ProductType, quantity: number = 1) {
     setProducts((prevValue) => {
       const existingProductIndex = prevValue.findIndex(
         (p) => p.id === product.id
@@ -27,19 +27,23 @@ export default function CartContextProvider({ children }: PropsWithChildren) {
         const updatedProducts = [...products];
         updatedProducts[existingProductIndex] = {
           ...updatedProducts[existingProductIndex],
-          quantity: updatedProducts[existingProductIndex].quantity + 1,
+          quantity: updatedProducts[existingProductIndex].quantity + quantity,
         };
         return updatedProducts;
       } else {
-        return [...prevValue, { ...product, quantity: 1 }];
+        return [...prevValue, { ...product, quantity: quantity }];
       }
     });
   }
 
+  function removeProduct(product: ProductType) {
+    setProducts((prevValue) => {
+      return [...prevValue.filter((p) => p.id !== product.id)];
+    });
+  }
+
   return (
-    <CartContext.Provider
-      value={{ products, addProduct, clear: () => setProducts([]) }}
-    >
+    <CartContext.Provider value={{ products, addProduct, removeProduct }}>
       {children}
     </CartContext.Provider>
   );
